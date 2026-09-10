@@ -74,3 +74,5 @@
   .site-header { flex-wrap: wrap; padding-block: 14px; }
   .nav-actions { margin-left: auto; flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
 }
+
+.account-session { display:flex; gap:16px; align-items:center; justify-content:flex-end; padding-block:12px; font-size:12px; color:var(--muted); flex-wrap:wrap; }

@@ -1,17 +1,23 @@
+<?php
+$site = 2;
+require __DIR__ . '/../backend/guard.php';
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
-    <meta content="#f4f0e6" name="theme-color"/>
+    <meta content="#d9ff43" name="theme-color"/>
     <title>
-      Administração · Margem
+      Administração · RUÍDO
     </title>
-    <link href="assets/livros.svg" rel="icon" type="image/svg+xml"/>
+    <link href="assets/camiseta.svg" rel="icon" type="image/svg+xml"/>
     <link href="assets/bootstrap.min.css" rel="stylesheet"/>
     <link href="style.css" rel="stylesheet"/>
     <link href="account.css" rel="stylesheet"/>
     <script defer="" src="account.js">
+    </script>
+    <script defer="" src="../backend/client.js">
     </script>
   </head>
   <body class="account-page admin-page">
@@ -19,19 +25,14 @@
       Pular para o conteúdo
     </a>
     <header class="site-header shell account-header">
-      <a aria-label="Margem, início" class="brand" href="./">
-        <span aria-hidden="true" class="brand-symbol">
-          m.
-        </span>
-        <span>
-          margem
-          <span class="brand-caption">
-            LIVRARIA INDEPENDENTE
-          </span>
-        </span>
+      <a aria-label="Ruído, início" class="brand" href="./">
+        RUÍDO
+        <sup>
+          ®
+        </sup>
       </a>
       <span class="header-note">
-        Administração / Margem
+        Administração / RUÍDO
       </span>
       <nav aria-label="Navegação do site e acessos" class="nav-actions">
         <a class="header-link" href="index.html">
@@ -40,7 +41,7 @@
             ↗
           </span>
         </a>
-        <a aria-current="page" aria-label="Acessar administração" class="admin-link" href="admin.html">
+        <a aria-current="page" aria-label="Acessar administração" class="admin-link" href="admin.php">
           Admin
         </a>
         <a aria-label="Login de usuários" class="profile-link" href="login.html" title="Login de usuários">
@@ -53,7 +54,6 @@
         </a>
       </nav>
     </header>
-    <!-- Painel demonstrativo sem proteção de rota. Autorização será implementada no backend. -->
     <main class="admin-main shell" id="main-content">
       <div class="admin-heading">
         <div>
@@ -61,14 +61,14 @@
             Painel de administração
           </div>
           <h1>
-            O movimento da livraria.
+            CONTROLE DO DROP.
           </h1>
           <p>
-            Um olhar sobre reservas de livros.
+            Um olhar sobre pedidos do drop.
           </p>
         </div>
         <span class="demo-badge">
-          Demonstração · acesso livre
+          Painel mock · acesso por perfil
         </span>
       </div>
       <section aria-label="Resumo de todos os registros" class="metric-grid">
@@ -101,7 +101,7 @@
         <div class="list-top">
           <div>
             <h2 id="list-title">
-              Reservas de livros
+              Pedidos do drop
             </h2>
             <p aria-live="polite" id="result-count" role="status">
               4 de 4 registros
@@ -135,7 +135,7 @@
         <div aria-label="Tabela de registros; role horizontalmente em telas pequenas" class="table-responsive" role="region" tabindex="0">
           <table class="table">
             <caption class="visually-hidden">
-              Reservas de livros — dados fictícios para demonstração.
+              Pedidos do drop — dados fictícios para demonstração.
             </caption>
             <thead>
               <tr>
@@ -143,7 +143,7 @@
                   Cliente
                 </th>
                 <th scope="col">
-                  Leitura
+                  Peça
                 </th>
                 <th scope="col">
                   Valor
@@ -157,7 +157,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr data-record="#1001" data-search="Ana Lima ana@example.com O jardim das pequenas coisas 1001" data-status="pending">
+              <tr data-record="#2001" data-search="Ana Lima ana@example.com Camiseta preto + lima 2001" data-status="pending">
                 <td>
                   <strong>
                     Ana Lima
@@ -167,13 +167,13 @@
                   </small>
                 </td>
                 <td>
-                  O jardim das pequenas coisas
+                  Camiseta preto + lima
                   <small>
-                    #1001 · 2 exemplares · retirada na livraria
+                    #2001 · M · 2 unidades
                   </small>
                 </td>
                 <td>
-                  R$ 96,00
+                  R$ 178,00
                 </td>
                 <td>
                   <span class="status-pill" data-status="pending">
@@ -181,12 +181,12 @@
                   </span>
                 </td>
                 <td>
-                  <button aria-label="Confirmar registro 1001 de Ana Lima" class="confirm-button" data-confirm="" type="button">
+                  <button aria-label="Confirmar registro 2001 de Ana Lima" class="confirm-button" data-confirm="" type="button">
                     Confirmar
                   </button>
                 </td>
               </tr>
-              <tr data-record="#1002" data-search="Bruno Costa bruno@example.com Atlas dos dias 1002" data-status="confirmed">
+              <tr data-record="#2002" data-search="Bruno Costa bruno@example.com Camiseta off-white + preto 2002" data-status="confirmed">
                 <td>
                   <strong>
                     Bruno Costa
@@ -196,13 +196,13 @@
                   </small>
                 </td>
                 <td>
-                  Atlas dos dias
+                  Camiseta off-white + preto
                   <small>
-                    #1002 · 1 exemplar · retirada na livraria
+                    #2002 · P · 1 unidade
                   </small>
                 </td>
                 <td>
-                  R$ 56,00
+                  R$ 89,00
                 </td>
                 <td>
                   <span class="status-pill" data-status="confirmed">
@@ -210,12 +210,12 @@
                   </span>
                 </td>
                 <td>
-                  <button aria-label="Confirmar registro 1002 de Bruno Costa" class="confirm-button" data-confirm="" disabled="" type="button">
+                  <button aria-label="Confirmar registro 2002 de Bruno Costa" class="confirm-button" data-confirm="" disabled="" type="button">
                     Confirmado
                   </button>
                 </td>
               </tr>
-              <tr data-record="#1003" data-search="Clara Dias clara@example.com A arte de reparar 1003" data-status="pending">
+              <tr data-record="#2003" data-search="Clara Dias clara@example.com Camiseta lima + preto 2003" data-status="pending">
                 <td>
                   <strong>
                     Clara Dias
@@ -225,13 +225,13 @@
                   </small>
                 </td>
                 <td>
-                  A arte de reparar
+                  Camiseta lima + preto
                   <small>
-                    #1003 · 1 exemplar · para presente
+                    #2003 · GG · 1 unidade
                   </small>
                 </td>
                 <td>
-                  R$ 42,00
+                  R$ 89,00
                 </td>
                 <td>
                   <span class="status-pill" data-status="pending">
@@ -239,12 +239,12 @@
                   </span>
                 </td>
                 <td>
-                  <button aria-label="Confirmar registro 1003 de Clara Dias" class="confirm-button" data-confirm="" type="button">
+                  <button aria-label="Confirmar registro 2003 de Clara Dias" class="confirm-button" data-confirm="" type="button">
                     Confirmar
                   </button>
                 </td>
               </tr>
-              <tr data-record="#1004" data-search="Diego Alves diego@example.com O jardim das pequenas coisas 1004" data-status="confirmed">
+              <tr data-record="#2004" data-search="Diego Alves diego@example.com Camiseta preto + lima 2004" data-status="confirmed">
                 <td>
                   <strong>
                     Diego Alves
@@ -254,13 +254,13 @@
                   </small>
                 </td>
                 <td>
-                  O jardim das pequenas coisas
+                  Camiseta preto + lima
                   <small>
-                    #1004 · 1 exemplar · retirada na livraria
+                    #2004 · G · 1 unidade
                   </small>
                 </td>
                 <td>
-                  R$ 48,00
+                  R$ 89,00
                 </td>
                 <td>
                   <span class="status-pill" data-status="confirmed">
@@ -268,7 +268,7 @@
                   </span>
                 </td>
                 <td>
-                  <button aria-label="Confirmar registro 1004 de Diego Alves" class="confirm-button" data-confirm="" disabled="" type="button">
+                  <button aria-label="Confirmar registro 2004 de Diego Alves" class="confirm-button" data-confirm="" disabled="" type="button">
                     Confirmado
                   </button>
                 </td>
@@ -291,7 +291,7 @@
     </main>
     <footer class="account-footer shell">
       <span>
-        Margem · Feito para conectar.
+        RUÍDO · Feito para conectar.
       </span>
       <span>
         Oficina · dados fictícios

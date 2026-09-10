@@ -1,17 +1,23 @@
+<?php
+$site = 1;
+require __DIR__ . '/../backend/guard.php';
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
-    <meta content="#edf1e8" name="theme-color"/>
+    <meta content="#f4f0e6" name="theme-color"/>
     <title>
-      Administração · Vereda
+      Administração · Margem
     </title>
-    <link href="assets/paisagem.svg" rel="icon" type="image/svg+xml"/>
+    <link href="assets/livros.svg" rel="icon" type="image/svg+xml"/>
     <link href="assets/bootstrap.min.css" rel="stylesheet"/>
     <link href="style.css" rel="stylesheet"/>
     <link href="account.css" rel="stylesheet"/>
     <script defer="" src="account.js">
+    </script>
+    <script defer="" src="../backend/client.js">
     </script>
   </head>
   <body class="account-page admin-page">
@@ -19,18 +25,19 @@
       Pular para o conteúdo
     </a>
     <header class="site-header shell account-header">
-      <a aria-label="Vereda, início" class="brand" href="./">
-        <svg aria-hidden="true" fill="none" height="33" viewBox="0 0 29 33" width="29">
-          <path d="M3 28 14 5l12 23M8 20h13M14 5v23" stroke="currentColor" stroke-linecap="round" stroke-width="2.5">
-          </path>
-        </svg>
-        vereda
-        <span class="brand-dot">
-          ®
+      <a aria-label="Margem, início" class="brand" href="./">
+        <span aria-hidden="true" class="brand-symbol">
+          m.
+        </span>
+        <span>
+          margem
+          <span class="brand-caption">
+            LIVRARIA INDEPENDENTE
+          </span>
         </span>
       </a>
       <span class="header-note">
-        Administração / Vereda
+        Administração / Margem
       </span>
       <nav aria-label="Navegação do site e acessos" class="nav-actions">
         <a class="header-link" href="index.html">
@@ -39,7 +46,7 @@
             ↗
           </span>
         </a>
-        <a aria-current="page" aria-label="Acessar administração" class="admin-link" href="admin.html">
+        <a aria-current="page" aria-label="Acessar administração" class="admin-link" href="admin.php">
           Admin
         </a>
         <a aria-label="Login de usuários" class="profile-link" href="login.html" title="Login de usuários">
@@ -52,7 +59,6 @@
         </a>
       </nav>
     </header>
-    <!-- Painel demonstrativo sem proteção de rota. Autorização será implementada no backend. -->
     <main class="admin-main shell" id="main-content">
       <div class="admin-heading">
         <div>
@@ -60,14 +66,14 @@
             Painel de administração
           </div>
           <h1>
-            Os próximos caminhos.
+            O movimento da livraria.
           </h1>
           <p>
-            Um olhar sobre reservas de experiências.
+            Um olhar sobre reservas de livros.
           </p>
         </div>
         <span class="demo-badge">
-          Demonstração · acesso livre
+          Painel mock · acesso por perfil
         </span>
       </div>
       <section aria-label="Resumo de todos os registros" class="metric-grid">
@@ -100,7 +106,7 @@
         <div class="list-top">
           <div>
             <h2 id="list-title">
-              Reservas de experiências
+              Reservas de livros
             </h2>
             <p aria-live="polite" id="result-count" role="status">
               4 de 4 registros
@@ -134,7 +140,7 @@
         <div aria-label="Tabela de registros; role horizontalmente em telas pequenas" class="table-responsive" role="region" tabindex="0">
           <table class="table">
             <caption class="visually-hidden">
-              Reservas de experiências — dados fictícios para demonstração.
+              Reservas de livros — dados fictícios para demonstração.
             </caption>
             <thead>
               <tr>
@@ -142,7 +148,7 @@
                   Cliente
                 </th>
                 <th scope="col">
-                  Trilha
+                  Leitura
                 </th>
                 <th scope="col">
                   Valor
@@ -156,7 +162,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr data-record="#4001" data-search="Ana Lima ana@example.com Trilha do Bosque 4001" data-status="pending">
+              <tr data-record="#1001" data-search="Ana Lima ana@example.com O jardim das pequenas coisas 1001" data-status="pending">
                 <td>
                   <strong>
                     Ana Lima
@@ -166,13 +172,13 @@
                   </small>
                 </td>
                 <td>
-                  Trilha do Bosque
+                  O jardim das pequenas coisas
                   <small>
-                    #4001 · 2 pessoas · 10 out. 2026
+                    #1001 · 2 exemplares · retirada na livraria
                   </small>
                 </td>
                 <td>
-                  R$ 170,00
+                  R$ 96,00
                 </td>
                 <td>
                   <span class="status-pill" data-status="pending">
@@ -180,12 +186,12 @@
                   </span>
                 </td>
                 <td>
-                  <button aria-label="Confirmar registro 4001 de Ana Lima" class="confirm-button" data-confirm="" type="button">
+                  <button aria-label="Confirmar registro 1001 de Ana Lima" class="confirm-button" data-confirm="" type="button">
                     Confirmar
                   </button>
                 </td>
               </tr>
-              <tr data-record="#4002" data-search="Bruno Costa bruno@example.com Caminho do Mirante 4002" data-status="confirmed">
+              <tr data-record="#1002" data-search="Bruno Costa bruno@example.com Atlas dos dias 1002" data-status="confirmed">
                 <td>
                   <strong>
                     Bruno Costa
@@ -195,13 +201,13 @@
                   </small>
                 </td>
                 <td>
-                  Caminho do Mirante
+                  Atlas dos dias
                   <small>
-                    #4002 · 1 pessoa · 17 out. 2026
+                    #1002 · 1 exemplar · retirada na livraria
                   </small>
                 </td>
                 <td>
-                  R$ 120,00
+                  R$ 56,00
                 </td>
                 <td>
                   <span class="status-pill" data-status="confirmed">
@@ -209,12 +215,12 @@
                   </span>
                 </td>
                 <td>
-                  <button aria-label="Confirmar registro 4002 de Bruno Costa" class="confirm-button" data-confirm="" disabled="" type="button">
+                  <button aria-label="Confirmar registro 1002 de Bruno Costa" class="confirm-button" data-confirm="" disabled="" type="button">
                     Confirmado
                   </button>
                 </td>
               </tr>
-              <tr data-record="#4003" data-search="Clara Dias clara@example.com Rota das Águas 4003" data-status="pending">
+              <tr data-record="#1003" data-search="Clara Dias clara@example.com A arte de reparar 1003" data-status="pending">
                 <td>
                   <strong>
                     Clara Dias
@@ -224,13 +230,13 @@
                   </small>
                 </td>
                 <td>
-                  Rota das Águas
+                  A arte de reparar
                   <small>
-                    #4003 · 1 pessoa · 24 out. 2026
+                    #1003 · 1 exemplar · para presente
                   </small>
                 </td>
                 <td>
-                  R$ 150,00
+                  R$ 42,00
                 </td>
                 <td>
                   <span class="status-pill" data-status="pending">
@@ -238,12 +244,12 @@
                   </span>
                 </td>
                 <td>
-                  <button aria-label="Confirmar registro 4003 de Clara Dias" class="confirm-button" data-confirm="" type="button">
+                  <button aria-label="Confirmar registro 1003 de Clara Dias" class="confirm-button" data-confirm="" type="button">
                     Confirmar
                   </button>
                 </td>
               </tr>
-              <tr data-record="#4004" data-search="Diego Alves diego@example.com Trilha do Bosque 4004" data-status="confirmed">
+              <tr data-record="#1004" data-search="Diego Alves diego@example.com O jardim das pequenas coisas 1004" data-status="confirmed">
                 <td>
                   <strong>
                     Diego Alves
@@ -253,13 +259,13 @@
                   </small>
                 </td>
                 <td>
-                  Trilha do Bosque
+                  O jardim das pequenas coisas
                   <small>
-                    #4004 · 1 pessoa · 17 out. 2026
+                    #1004 · 1 exemplar · retirada na livraria
                   </small>
                 </td>
                 <td>
-                  R$ 85,00
+                  R$ 48,00
                 </td>
                 <td>
                   <span class="status-pill" data-status="confirmed">
@@ -267,7 +273,7 @@
                   </span>
                 </td>
                 <td>
-                  <button aria-label="Confirmar registro 4004 de Diego Alves" class="confirm-button" data-confirm="" disabled="" type="button">
+                  <button aria-label="Confirmar registro 1004 de Diego Alves" class="confirm-button" data-confirm="" disabled="" type="button">
                     Confirmado
                   </button>
                 </td>
@@ -290,7 +296,7 @@
     </main>
     <footer class="account-footer shell">
       <span>
-        Vereda · Feito para conectar.
+        Margem · Feito para conectar.
       </span>
       <span>
         Oficina · dados fictícios

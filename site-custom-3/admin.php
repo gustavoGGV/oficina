@@ -1,3 +1,7 @@
+<?php
+$site = 3;
+require __DIR__ . '/../backend/guard.php';
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
@@ -12,6 +16,8 @@
     <link href="style.css" rel="stylesheet"/>
     <link href="account.css" rel="stylesheet"/>
     <script defer="" src="account.js">
+    </script>
+    <script defer="" src="../backend/client.js">
     </script>
   </head>
   <body class="account-page admin-page">
@@ -38,7 +44,7 @@
             ↗
           </span>
         </a>
-        <a aria-current="page" aria-label="Acessar administração" class="admin-link" href="admin.html">
+        <a aria-current="page" aria-label="Acessar administração" class="admin-link" href="admin.php">
           Admin
         </a>
         <a aria-label="Login de usuários" class="profile-link" href="login.html" title="Login de usuários">
@@ -51,7 +57,6 @@
         </a>
       </nav>
     </header>
-    <!-- Painel demonstrativo sem proteção de rota. Autorização será implementada no backend. -->
     <main class="admin-main shell" id="main-content">
       <div class="admin-heading">
         <div>
@@ -66,7 +71,7 @@
           </p>
         </div>
         <span class="demo-badge">
-          Demonstração · acesso livre
+          Painel mock · acesso por perfil
         </span>
       </div>
       <section aria-label="Resumo de todos os registros" class="metric-grid">

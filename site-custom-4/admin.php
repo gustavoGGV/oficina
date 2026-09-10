@@ -1,17 +1,23 @@
+<?php
+$site = 4;
+require __DIR__ . '/../backend/guard.php';
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
-    <meta content="#f5efdf" name="theme-color"/>
+    <meta content="#edf1e8" name="theme-color"/>
     <title>
-      Administração · Grão
+      Administração · Vereda
     </title>
-    <link href="assets/cafe.svg" rel="icon" type="image/svg+xml"/>
+    <link href="assets/paisagem.svg" rel="icon" type="image/svg+xml"/>
     <link href="assets/bootstrap.min.css" rel="stylesheet"/>
     <link href="style.css" rel="stylesheet"/>
     <link href="account.css" rel="stylesheet"/>
     <script defer="" src="account.js">
+    </script>
+    <script defer="" src="../backend/client.js">
     </script>
   </head>
   <body class="account-page admin-page">
@@ -19,14 +25,18 @@
       Pular para o conteúdo
     </a>
     <header class="site-header shell account-header">
-      <a aria-label="Grão, início" class="brand" href="./">
-        grão
+      <a aria-label="Vereda, início" class="brand" href="./">
+        <svg aria-hidden="true" fill="none" height="33" viewBox="0 0 29 33" width="29">
+          <path d="M3 28 14 5l12 23M8 20h13M14 5v23" stroke="currentColor" stroke-linecap="round" stroke-width="2.5">
+          </path>
+        </svg>
+        vereda
         <span class="brand-dot">
-          ●
+          ®
         </span>
       </a>
       <span class="header-note">
-        Administração / Grão
+        Administração / Vereda
       </span>
       <nav aria-label="Navegação do site e acessos" class="nav-actions">
         <a class="header-link" href="index.html">
@@ -35,7 +45,7 @@
             ↗
           </span>
         </a>
-        <a aria-current="page" aria-label="Acessar administração" class="admin-link" href="admin.html">
+        <a aria-current="page" aria-label="Acessar administração" class="admin-link" href="admin.php">
           Admin
         </a>
         <a aria-label="Login de usuários" class="profile-link" href="login.html" title="Login de usuários">
@@ -48,7 +58,6 @@
         </a>
       </nav>
     </header>
-    <!-- Painel demonstrativo sem proteção de rota. Autorização será implementada no backend. -->
     <main class="admin-main shell" id="main-content">
       <div class="admin-heading">
         <div>
@@ -56,14 +65,14 @@
             Painel de administração
           </div>
           <h1>
-            A casa está de portas abertas.
+            Os próximos caminhos.
           </h1>
           <p>
-            Um olhar sobre inscrições nas oficinas.
+            Um olhar sobre reservas de experiências.
           </p>
         </div>
         <span class="demo-badge">
-          Demonstração · acesso livre
+          Painel mock · acesso por perfil
         </span>
       </div>
       <section aria-label="Resumo de todos os registros" class="metric-grid">
@@ -96,7 +105,7 @@
         <div class="list-top">
           <div>
             <h2 id="list-title">
-              Inscrições nas oficinas
+              Reservas de experiências
             </h2>
             <p aria-live="polite" id="result-count" role="status">
               4 de 4 registros
@@ -130,7 +139,7 @@
         <div aria-label="Tabela de registros; role horizontalmente em telas pequenas" class="table-responsive" role="region" tabindex="0">
           <table class="table">
             <caption class="visually-hidden">
-              Inscrições nas oficinas — dados fictícios para demonstração.
+              Reservas de experiências — dados fictícios para demonstração.
             </caption>
             <thead>
               <tr>
@@ -138,7 +147,7 @@
                   Cliente
                 </th>
                 <th scope="col">
-                  Oficina
+                  Trilha
                 </th>
                 <th scope="col">
                   Valor
@@ -152,7 +161,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr data-record="#5001" data-search="Ana Lima ana@example.com O universo dos coados 5001" data-status="pending">
+              <tr data-record="#4001" data-search="Ana Lima ana@example.com Trilha do Bosque 4001" data-status="pending">
                 <td>
                   <strong>
                     Ana Lima
@@ -162,13 +171,13 @@
                   </small>
                 </td>
                 <td>
-                  O universo dos coados
+                  Trilha do Bosque
                   <small>
-                    #5001 · 17 out. 2026 · 9h às 11h
+                    #4001 · 2 pessoas · 10 out. 2026
                   </small>
                 </td>
                 <td>
-                  R$ 95,00
+                  R$ 170,00
                 </td>
                 <td>
                   <span class="status-pill" data-status="pending">
@@ -176,12 +185,12 @@
                   </span>
                 </td>
                 <td>
-                  <button aria-label="Confirmar registro 5001 de Ana Lima" class="confirm-button" data-confirm="" type="button">
+                  <button aria-label="Confirmar registro 4001 de Ana Lima" class="confirm-button" data-confirm="" type="button">
                     Confirmar
                   </button>
                 </td>
               </tr>
-              <tr data-record="#5002" data-search="Bruno Costa bruno@example.com Primeiros passos no latte art 5002" data-status="confirmed">
+              <tr data-record="#4002" data-search="Bruno Costa bruno@example.com Caminho do Mirante 4002" data-status="confirmed">
                 <td>
                   <strong>
                     Bruno Costa
@@ -191,13 +200,13 @@
                   </small>
                 </td>
                 <td>
-                  Primeiros passos no latte art
+                  Caminho do Mirante
                   <small>
-                    #5002 · 17 out. 2026 · 14h às 16h
+                    #4002 · 1 pessoa · 17 out. 2026
                   </small>
                 </td>
                 <td>
-                  R$ 140,00
+                  R$ 120,00
                 </td>
                 <td>
                   <span class="status-pill" data-status="confirmed">
@@ -205,12 +214,12 @@
                   </span>
                 </td>
                 <td>
-                  <button aria-label="Confirmar registro 5002 de Bruno Costa" class="confirm-button" data-confirm="" disabled="" type="button">
+                  <button aria-label="Confirmar registro 4002 de Bruno Costa" class="confirm-button" data-confirm="" disabled="" type="button">
                     Confirmado
                   </button>
                 </td>
               </tr>
-              <tr data-record="#5003" data-search="Clara Dias clara@example.com Sabores & aromas 5003" data-status="pending">
+              <tr data-record="#4003" data-search="Clara Dias clara@example.com Rota das Águas 4003" data-status="pending">
                 <td>
                   <strong>
                     Clara Dias
@@ -220,13 +229,13 @@
                   </small>
                 </td>
                 <td>
-                  Sabores & aromas
+                  Rota das Águas
                   <small>
-                    #5003 · 18 out. 2026 · 9h às 11h
+                    #4003 · 1 pessoa · 24 out. 2026
                   </small>
                 </td>
                 <td>
-                  R$ 110,00
+                  R$ 150,00
                 </td>
                 <td>
                   <span class="status-pill" data-status="pending">
@@ -234,12 +243,12 @@
                   </span>
                 </td>
                 <td>
-                  <button aria-label="Confirmar registro 5003 de Clara Dias" class="confirm-button" data-confirm="" type="button">
+                  <button aria-label="Confirmar registro 4003 de Clara Dias" class="confirm-button" data-confirm="" type="button">
                     Confirmar
                   </button>
                 </td>
               </tr>
-              <tr data-record="#5004" data-search="Diego Alves diego@example.com O universo dos coados 5004" data-status="confirmed">
+              <tr data-record="#4004" data-search="Diego Alves diego@example.com Trilha do Bosque 4004" data-status="confirmed">
                 <td>
                   <strong>
                     Diego Alves
@@ -249,13 +258,13 @@
                   </small>
                 </td>
                 <td>
-                  O universo dos coados
+                  Trilha do Bosque
                   <small>
-                    #5004 · 17 out. 2026 · 14h às 16h
+                    #4004 · 1 pessoa · 17 out. 2026
                   </small>
                 </td>
                 <td>
-                  R$ 95,00
+                  R$ 85,00
                 </td>
                 <td>
                   <span class="status-pill" data-status="confirmed">
@@ -263,7 +272,7 @@
                   </span>
                 </td>
                 <td>
-                  <button aria-label="Confirmar registro 5004 de Diego Alves" class="confirm-button" data-confirm="" disabled="" type="button">
+                  <button aria-label="Confirmar registro 4004 de Diego Alves" class="confirm-button" data-confirm="" disabled="" type="button">
                     Confirmado
                   </button>
                 </td>
@@ -286,7 +295,7 @@
     </main>
     <footer class="account-footer shell">
       <span>
-        Grão · Feito para conectar.
+        Vereda · Feito para conectar.
       </span>
       <span>
         Oficina · dados fictícios

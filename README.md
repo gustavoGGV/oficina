@@ -4,7 +4,7 @@ Cinco páginas independentes em **HTML, CSS, JavaScript e Bootstrap 5.3.3**, cad
 
 ## Abra e escolha
 
-Abra `index.html` no navegador para ver o catálogo, ou abra diretamente o `index.html` de uma das pastas. **Não precisa instalar dependências, iniciar servidor ou ter internet.** Bootstrap e ilustrações SVG estão incluídos localmente. O catálogo é apenas um índice; não faz parte dos cinco sites.
+Abra `index.html` no navegador para ver o catálogo, ou abra diretamente o `index.html` de uma das pastas. **As páginas visuais usam recursos locais; login e administração exigem Apache + PHP + MySQL.** Veja [backend/README.md](backend/README.md) para configurar o banco e criar as três contas. Bootstrap e ilustrações SVG estão incluídos localmente. O catálogo é apenas um índice; não faz parte dos cinco sites.
 
 | Pasta | Tema | Identidade visual | Tarefa do usuário |
 | --- | --- | --- | --- |
@@ -14,7 +14,7 @@ Abra `index.html` no navegador para ver o catálogo, ou abra diretamente o `inde
 | [site-custom-4](site-custom-4/index.html) | Vereda · ecoturismo | Verdes suaves, paisagem e cantos arredondados | Escolher trilha, data e número de participantes |
 | [site-custom-5](site-custom-5/index.html) | Grão · oficina de café | Laranja e creme, composição de revista | Escolher oficina e turma para uma pessoa |
 
-Cada pasta pode ser copiada e distribuída separadamente. Não há arquivos compartilhados obrigatórios entre os cinco sites.
+Para distribuir o login funcional, copie a pasta `backend` junto dos cinco temas. As páginas visuais mantêm seus próprios estilos e ilustrações.
 
 ## Onde customizar
 
@@ -43,7 +43,7 @@ Os formulários validam campos obrigatórios, nome e formato de e-mail; mostram 
 
 A RUÍDO também troca a cor da camiseta ilustrada e tem um guia de tamanhos expansível. A Vereda informa distância, duração e dificuldade ao trocar a trilha.
 
-**Não há backend, cobrança, reserva efetiva, envio de e-mail ou armazenamento de dados.** Use nomes e e-mails fictícios. A espera de 500 ms permite observar o carregamento durante a atividade. O conteúdo digitado é exibido com `textContent`.
+**Os formulários de reserva não fazem cobrança, reserva efetiva, envio de e-mail ou armazenamento de dados. O login possui backend e usa as contas do MySQL.** Use nomes e e-mails fictícios. A espera de 500 ms permite observar o carregamento durante a atividade. O conteúdo digitado é exibido com `textContent`.
 
 ## Atividade de 40 minutos
 
@@ -71,28 +71,33 @@ As páginas são bases funcionais. Os desafios abaixo são sugestões abertas; n
 
 Entrega sugerida: **problema identificado → mudança feita → resultado observado**. Para testar, tente enviar vazio, digite um e-mail incorreto, corrija os campos, mude uma opção e confira o total. Repita usando apenas o teclado e em uma janela estreita.
 
-## Continuação: segurança
+## Login compartilhado e segurança
 
-O JavaScript é uma demonstração de interface. Quem controla o navegador pode alterar campos, preços e regras. Um backend real precisaria validar opções e quantidades e recalcular os valores a partir de dados confiáveis. A observação pode servir para discutir a diferença entre mostrar texto e interpretá-lo como HTML. Esta coleção não implementa essa etapa de servidor.
+O backend agora atende somente autenticação e controle de acesso aos admins. Reservas, pedidos, inscrições e alterações de status continuam mock, sem banco ou API próprios.
 
-## Recuperar a versão inicial
+Cada navbar tem acessos separados: o perfil abre `login.html`; Admin abre `admin.php`. Os clientes voltam ao site após entrar. A identidade aparece no topo, com botão Sair. As três contas são compartilhadas entre os temas; cookies e chaves são separados.
 
-O arquivo `originais-oficina.zip` contém a versão entregue dos cinco sites, o catálogo e este guia. Extraia-o em outra pasta para comparar ou recuperar um arquivo sem sobrescrever o trabalho das duplas.
+Consulte [o guia do backend](backend/README.md) para instalação, contas fictícias, tabela de vulnerabilidades, instruções com Burp e modo corrigido. A configuração padrão contém uma falha principal diferente em cada tema e restringe o backend ao computador local.
 
-## Verificação desta entrega
+| Site | Falha deliberada | Correção |
+| --- | --- | --- |
+| Margem | SQL Injection no login | Consultas parametrizadas |
+| RUÍDO | Cliente acessa administração | Verificação de perfil no servidor |
+| PULSO | Assinatura do JWT não verificada | Verificar assinatura e condições de validade |
+| Vereda | XSS no erro do login | Mensagem genérica e saída com textContent |
+| Grão | Chave de assinatura exposta no JavaScript | Remover a exposição e rotacionar a chave |
 
-Foram conferidos sintaxe de JavaScript e CSS, estrutura dos formulários, associações entre campos e rótulos, arquivos locais, SVGs e cálculos das combinações de opções. A revisão em navegador não foi executada: o ambiente restringiu a execução e a autorização para iniciar o servidor local foi recusada. As regras responsivas estão implementadas, mas a aparência final em cada dispositivo ainda precisa de inspeção no navegador.
+## Arquivos de conta
 
+- `login.html`: e-mail, senha, mostrar/ocultar e envio JSON ao login.
+- `auth.php`: fixa o tema e chama o controlador compartilhado.
+- `admin.php`: verifica identidade e permissão antes de emitir o painel mock.
+- `account.css`: estilos de login, painel e navbar.
+- `account.js`: filtros e alterações visuais dos registros fictícios.
+- `backend/client.js`: login, identificação da conta, logout e mensagens.
 
-## Login e administração
+O instalador CLI `php backend/install.php` cria duas contas de cliente e uma de administrador no MySQL configurado. Não é uma instalação automática do serviço MySQL; configure o servidor e as credenciais conforme o guia.
 
-Todos os temas agora têm `login.html` e `admin.html`. O ícone de perfil na barra superior abre o login de usuários. Um botão separado, “Admin”, abre diretamente a administração; os dois acessos estão nas três páginas de cada tema. As páginas reutilizam o Bootstrap, as fontes, as cores e as ilustrações locais de cada tema.
+## Verificações
 
-- `login.html`: e-mail, senha, botão para mostrar/ocultar a senha e login demonstrativo de usuários. Ao continuar, a navegação retorna à página inicial, sem conceder acesso administrativo nem criar uma sessão. Não verifica credenciais; os campos podem ficar vazios. Nenhum valor é enviado ou armazenado.
-- `admin.html`: acesso direto e livre, resumo de registros, busca por nome/e-mail/item/número, filtro por status e confirmação visual de registros fictícios. Recarregar restaura os dados iniciais.
-- `account.css`: estilos das telas de conta e do ícone de perfil. Mantém cada pasta independente.
-- `account.js`: navegação demonstrativa, exibição de senha, filtros e atualização visual do painel.
-
-O formulário da página inicial permanece independente: suas reservas simuladas não alimentam o painel. Autenticação, autorização, integração com MySQL e persistência serão implementadas no backend em uma etapa futura. Nenhuma das vulnerabilidades discutidas para a oficina foi adicionada nesta etapa.
-
-Para integrar o login real, os comentários no HTML indicam onde conectar o backend. Os campos de login estão sem `name` para evitar que as credenciais sejam enviadas na URL na navegação demonstrativa, inclusive se o JavaScript estiver desativado.
+Os scripts `tests/login.php` e `tests/http.php` verificam o login, papéis, isolamento entre temas e os resultados esperados nos modos vulnerável e corrigido. As instruções de execução estão no guia do backend.

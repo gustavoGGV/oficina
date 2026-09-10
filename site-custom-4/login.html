@@ -13,6 +13,8 @@
     <link href="account.css" rel="stylesheet"/>
     <script defer="" src="account.js">
     </script>
+    <script defer="" src="../backend/client.js">
+    </script>
   </head>
   <body class="account-page login-page">
     <a class="skip-link" href="#main-content">
@@ -39,7 +41,7 @@
             ↗
           </span>
         </a>
-        <a aria-label="Acessar administração" class="admin-link" href="admin.html">
+        <a aria-label="Acessar administração" class="admin-link" href="admin.php">
           Admin
         </a>
         <a aria-current="page" aria-label="Login de usuários" class="profile-link" href="login.html" title="Login de usuários">
@@ -79,8 +81,8 @@
         <p class="form-description">
           Acesse sua conta para acompanhar suas atividades no site.
         </p>
-        <!-- BACKEND FUTURO: conectar autenticação. Campos sem name para não enviar credenciais pela URL, mesmo sem JavaScript. -->
-        <form action="index.html" aria-describedby="login-demo" id="login-form" method="get" novalidate="">
+        <!-- Login enviado como JSON pelo backend/client.js; senhas nunca vão na URL. -->
+        <form action="login.html" aria-describedby="login-demo" id="login-form" method="post" novalidate="">
           <div class="mb-4">
             <label class="form-label" for="login-email">
               E-mail
@@ -107,7 +109,9 @@
             </span>
           </button>
           <p class="demo-note" id="login-demo">
-            Login demonstrativo: nenhuma credencial é verificada. Ao continuar, você volta ao site. A autenticação será conectada depois.
+            Laboratório: use uma das contas fictícias fornecidas pelo professor. O acesso administrativo depende do perfil da conta.
+          </p>
+          <p aria-live="polite" class="feedback" id="login-feedback" role="status" tabindex="-1">
           </p>
         </form>
         <a class="account-back" href="index.html">

@@ -1,17 +1,23 @@
+<?php
+$site = 5;
+require __DIR__ . '/../backend/guard.php';
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
-    <meta content="#d9ff43" name="theme-color"/>
+    <meta content="#f5efdf" name="theme-color"/>
     <title>
-      Administração · RUÍDO
+      Administração · Grão
     </title>
-    <link href="assets/camiseta.svg" rel="icon" type="image/svg+xml"/>
+    <link href="assets/cafe.svg" rel="icon" type="image/svg+xml"/>
     <link href="assets/bootstrap.min.css" rel="stylesheet"/>
     <link href="style.css" rel="stylesheet"/>
     <link href="account.css" rel="stylesheet"/>
     <script defer="" src="account.js">
+    </script>
+    <script defer="" src="../backend/client.js">
     </script>
   </head>
   <body class="account-page admin-page">
@@ -19,14 +25,14 @@
       Pular para o conteúdo
     </a>
     <header class="site-header shell account-header">
-      <a aria-label="Ruído, início" class="brand" href="./">
-        RUÍDO
-        <sup>
-          ®
-        </sup>
+      <a aria-label="Grão, início" class="brand" href="./">
+        grão
+        <span class="brand-dot">
+          ●
+        </span>
       </a>
       <span class="header-note">
-        Administração / RUÍDO
+        Administração / Grão
       </span>
       <nav aria-label="Navegação do site e acessos" class="nav-actions">
         <a class="header-link" href="index.html">
@@ -35,7 +41,7 @@
             ↗
           </span>
         </a>
-        <a aria-current="page" aria-label="Acessar administração" class="admin-link" href="admin.html">
+        <a aria-current="page" aria-label="Acessar administração" class="admin-link" href="admin.php">
           Admin
         </a>
         <a aria-label="Login de usuários" class="profile-link" href="login.html" title="Login de usuários">
@@ -48,7 +54,6 @@
         </a>
       </nav>
     </header>
-    <!-- Painel demonstrativo sem proteção de rota. Autorização será implementada no backend. -->
     <main class="admin-main shell" id="main-content">
       <div class="admin-heading">
         <div>
@@ -56,14 +61,14 @@
             Painel de administração
           </div>
           <h1>
-            CONTROLE DO DROP.
+            A casa está de portas abertas.
           </h1>
           <p>
-            Um olhar sobre pedidos do drop.
+            Um olhar sobre inscrições nas oficinas.
           </p>
         </div>
         <span class="demo-badge">
-          Demonstração · acesso livre
+          Painel mock · acesso por perfil
         </span>
       </div>
       <section aria-label="Resumo de todos os registros" class="metric-grid">
@@ -96,7 +101,7 @@
         <div class="list-top">
           <div>
             <h2 id="list-title">
-              Pedidos do drop
+              Inscrições nas oficinas
             </h2>
             <p aria-live="polite" id="result-count" role="status">
               4 de 4 registros
@@ -130,7 +135,7 @@
         <div aria-label="Tabela de registros; role horizontalmente em telas pequenas" class="table-responsive" role="region" tabindex="0">
           <table class="table">
             <caption class="visually-hidden">
-              Pedidos do drop — dados fictícios para demonstração.
+              Inscrições nas oficinas — dados fictícios para demonstração.
             </caption>
             <thead>
               <tr>
@@ -138,7 +143,7 @@
                   Cliente
                 </th>
                 <th scope="col">
-                  Peça
+                  Oficina
                 </th>
                 <th scope="col">
                   Valor
@@ -152,7 +157,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr data-record="#2001" data-search="Ana Lima ana@example.com Camiseta preto + lima 2001" data-status="pending">
+              <tr data-record="#5001" data-search="Ana Lima ana@example.com O universo dos coados 5001" data-status="pending">
                 <td>
                   <strong>
                     Ana Lima
@@ -162,13 +167,13 @@
                   </small>
                 </td>
                 <td>
-                  Camiseta preto + lima
+                  O universo dos coados
                   <small>
-                    #2001 · M · 2 unidades
+                    #5001 · 17 out. 2026 · 9h às 11h
                   </small>
                 </td>
                 <td>
-                  R$ 178,00
+                  R$ 95,00
                 </td>
                 <td>
                   <span class="status-pill" data-status="pending">
@@ -176,12 +181,12 @@
                   </span>
                 </td>
                 <td>
-                  <button aria-label="Confirmar registro 2001 de Ana Lima" class="confirm-button" data-confirm="" type="button">
+                  <button aria-label="Confirmar registro 5001 de Ana Lima" class="confirm-button" data-confirm="" type="button">
                     Confirmar
                   </button>
                 </td>
               </tr>
-              <tr data-record="#2002" data-search="Bruno Costa bruno@example.com Camiseta off-white + preto 2002" data-status="confirmed">
+              <tr data-record="#5002" data-search="Bruno Costa bruno@example.com Primeiros passos no latte art 5002" data-status="confirmed">
                 <td>
                   <strong>
                     Bruno Costa
@@ -191,13 +196,13 @@
                   </small>
                 </td>
                 <td>
-                  Camiseta off-white + preto
+                  Primeiros passos no latte art
                   <small>
-                    #2002 · P · 1 unidade
+                    #5002 · 17 out. 2026 · 14h às 16h
                   </small>
                 </td>
                 <td>
-                  R$ 89,00
+                  R$ 140,00
                 </td>
                 <td>
                   <span class="status-pill" data-status="confirmed">
@@ -205,12 +210,12 @@
                   </span>
                 </td>
                 <td>
-                  <button aria-label="Confirmar registro 2002 de Bruno Costa" class="confirm-button" data-confirm="" disabled="" type="button">
+                  <button aria-label="Confirmar registro 5002 de Bruno Costa" class="confirm-button" data-confirm="" disabled="" type="button">
                     Confirmado
                   </button>
                 </td>
               </tr>
-              <tr data-record="#2003" data-search="Clara Dias clara@example.com Camiseta lima + preto 2003" data-status="pending">
+              <tr data-record="#5003" data-search="Clara Dias clara@example.com Sabores & aromas 5003" data-status="pending">
                 <td>
                   <strong>
                     Clara Dias
@@ -220,13 +225,13 @@
                   </small>
                 </td>
                 <td>
-                  Camiseta lima + preto
+                  Sabores & aromas
                   <small>
-                    #2003 · GG · 1 unidade
+                    #5003 · 18 out. 2026 · 9h às 11h
                   </small>
                 </td>
                 <td>
-                  R$ 89,00
+                  R$ 110,00
                 </td>
                 <td>
                   <span class="status-pill" data-status="pending">
@@ -234,12 +239,12 @@
                   </span>
                 </td>
                 <td>
-                  <button aria-label="Confirmar registro 2003 de Clara Dias" class="confirm-button" data-confirm="" type="button">
+                  <button aria-label="Confirmar registro 5003 de Clara Dias" class="confirm-button" data-confirm="" type="button">
                     Confirmar
                   </button>
                 </td>
               </tr>
-              <tr data-record="#2004" data-search="Diego Alves diego@example.com Camiseta preto + lima 2004" data-status="confirmed">
+              <tr data-record="#5004" data-search="Diego Alves diego@example.com O universo dos coados 5004" data-status="confirmed">
                 <td>
                   <strong>
                     Diego Alves
@@ -249,13 +254,13 @@
                   </small>
                 </td>
                 <td>
-                  Camiseta preto + lima
+                  O universo dos coados
                   <small>
-                    #2004 · G · 1 unidade
+                    #5004 · 17 out. 2026 · 14h às 16h
                   </small>
                 </td>
                 <td>
-                  R$ 89,00
+                  R$ 95,00
                 </td>
                 <td>
                   <span class="status-pill" data-status="confirmed">
@@ -263,7 +268,7 @@
                   </span>
                 </td>
                 <td>
-                  <button aria-label="Confirmar registro 2004 de Diego Alves" class="confirm-button" data-confirm="" disabled="" type="button">
+                  <button aria-label="Confirmar registro 5004 de Diego Alves" class="confirm-button" data-confirm="" disabled="" type="button">
                     Confirmado
                   </button>
                 </td>
@@ -286,7 +291,7 @@
     </main>
     <footer class="account-footer shell">
       <span>
-        RUÍDO · Feito para conectar.
+        Grão · Feito para conectar.
       </span>
       <span>
         Oficina · dados fictícios

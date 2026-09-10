@@ -1,23 +1,4 @@
-/* Interface de demonstração. O backend futuro cuidará de autenticação,
-   autorização e persistência. Não há sessão nem credenciais armazenadas. */
-const loginForm = document.querySelector('#login-form');
-if (loginForm) {
-  const password = document.querySelector('#login-password');
-  const toggle = document.querySelector('#toggle-password');
-  toggle.addEventListener('click', () => {
-    const show = password.type === 'password';
-    password.type = show ? 'text' : 'password';
-    toggle.textContent = show ? 'Ocultar' : 'Mostrar';
-    toggle.setAttribute('aria-pressed', String(show));
-  });
-  loginForm.addEventListener('submit', event => {
-    event.preventDefault();
-    // Demonstração de login comum: volta ao site, sem criar sessão ou transmitir os campos.
-    loginForm.reset();
-    window.location.assign('index.html');
-  });
-}
-
+/* Painel mock: nenhuma alteração é persistida ou enviada ao servidor. */
 const adminList = document.querySelector('#admin-list');
 if (adminList) {
   const rows = [...adminList.querySelectorAll('[data-record]')];
