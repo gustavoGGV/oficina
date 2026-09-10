@@ -13,6 +13,7 @@
     <link href="style.css" rel="stylesheet"/>
     <script defer="" src="script.js">
     </script>
+    <link href="account.css" rel="stylesheet"/>
   </head>
   <body>
     <a class="skip-link" href="#aventura">
@@ -20,7 +21,7 @@
     </a>
     <header class="site-header shell">
       <a aria-label="Vereda, início" class="brand" href="./">
-        <svg aria-hidden="true" fill="none" height="33" viewbox="0 0 29 33" width="29">
+        <svg aria-hidden="true" fill="none" height="33" viewBox="0 0 29 33" width="29">
           <path d="M3 28 14 5l12 23M8 20h13M14 5v23" stroke="currentColor" stroke-linecap="round" stroke-width="2.5">
           </path>
         </svg>
@@ -32,12 +33,25 @@
       <span class="header-note">
         Menos pressa. Mais caminho.
       </span>
-      <a class="header-link" href="#aventura">
-        Encontre sua trilha
-        <span aria-hidden="true">
-          ↗
-        </span>
-      </a>
+      <nav aria-label="Navegação do site e acessos" class="nav-actions">
+        <a class="header-link" href="#aventura">
+          Encontre sua trilha
+          <span aria-hidden="true">
+            ↗
+          </span>
+        </a>
+        <a aria-label="Acessar administração" class="admin-link" href="admin.html">
+          Admin
+        </a>
+        <a aria-label="Login de usuários" class="profile-link" href="login.html" title="Login de usuários">
+          <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+            <circle cx="12" cy="8" r="3.5">
+            </circle>
+            <path d="M5 21v-2a7 7 0 0 1 14 0v2" stroke-linecap="round">
+            </path>
+          </svg>
+        </a>
+      </nav>
     </header>
     <main class="shell">
       <div class="nature-layout">

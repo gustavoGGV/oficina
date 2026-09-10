@@ -13,6 +13,7 @@
     <link href="style.css" rel="stylesheet"/>
     <script defer="" src="script.js">
     </script>
+    <link href="account.css" rel="stylesheet"/>
   </head>
   <body>
     <a class="skip-link" href="#oficina">
@@ -28,12 +29,25 @@
       <span class="header-note">
         Café bom começa na curiosidade.
       </span>
-      <a class="header-link" href="#oficina">
-        Sente com a gente
-        <span aria-hidden="true">
-          ↗
-        </span>
-      </a>
+      <nav aria-label="Navegação do site e acessos" class="nav-actions">
+        <a class="header-link" href="#oficina">
+          Sente com a gente
+          <span aria-hidden="true">
+            ↗
+          </span>
+        </a>
+        <a aria-label="Acessar administração" class="admin-link" href="admin.html">
+          Admin
+        </a>
+        <a aria-label="Login de usuários" class="profile-link" href="login.html" title="Login de usuários">
+          <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+            <circle cx="12" cy="8" r="3.5">
+            </circle>
+            <path d="M5 21v-2a7 7 0 0 1 14 0v2" stroke-linecap="round">
+            </path>
+          </svg>
+        </a>
+      </nav>
     </header>
     <main class="coffee-layout">
       <!-- HERO: a xícara e o selo são ilustrações, não fotografias externas. -->

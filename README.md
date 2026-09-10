@@ -1,6 +1,6 @@
 # Cinco sites para uma oficina de UI/UX
 
-Cinco páginas independentes em **HTML, CSS, JavaScript e Bootstrap 5.3.3**, cada uma com um hero e um formulário. Todo o conteúdo está em português. Marcas, produtos, eventos, datas e experiências são fictícios.
+Cinco páginas independentes em **HTML, CSS, JavaScript e Bootstrap 5.3.3**, cada página inicial com um hero e um formulário, além de telas próprias de login e administração. Todo o conteúdo está em português. Marcas, produtos, eventos, datas e experiências são fictícios.
 
 ## Abra e escolha
 
@@ -82,3 +82,17 @@ O arquivo `originais-oficina.zip` contém a versão entregue dos cinco sites, o 
 ## Verificação desta entrega
 
 Foram conferidos sintaxe de JavaScript e CSS, estrutura dos formulários, associações entre campos e rótulos, arquivos locais, SVGs e cálculos das combinações de opções. A revisão em navegador não foi executada: o ambiente restringiu a execução e a autorização para iniciar o servidor local foi recusada. As regras responsivas estão implementadas, mas a aparência final em cada dispositivo ainda precisa de inspeção no navegador.
+
+
+## Login e administração
+
+Todos os temas agora têm `login.html` e `admin.html`. O ícone de perfil na barra superior abre o login de usuários. Um botão separado, “Admin”, abre diretamente a administração; os dois acessos estão nas três páginas de cada tema. As páginas reutilizam o Bootstrap, as fontes, as cores e as ilustrações locais de cada tema.
+
+- `login.html`: e-mail, senha, botão para mostrar/ocultar a senha e login demonstrativo de usuários. Ao continuar, a navegação retorna à página inicial, sem conceder acesso administrativo nem criar uma sessão. Não verifica credenciais; os campos podem ficar vazios. Nenhum valor é enviado ou armazenado.
+- `admin.html`: acesso direto e livre, resumo de registros, busca por nome/e-mail/item/número, filtro por status e confirmação visual de registros fictícios. Recarregar restaura os dados iniciais.
+- `account.css`: estilos das telas de conta e do ícone de perfil. Mantém cada pasta independente.
+- `account.js`: navegação demonstrativa, exibição de senha, filtros e atualização visual do painel.
+
+O formulário da página inicial permanece independente: suas reservas simuladas não alimentam o painel. Autenticação, autorização, integração com MySQL e persistência serão implementadas no backend em uma etapa futura. Nenhuma das vulnerabilidades discutidas para a oficina foi adicionada nesta etapa.
+
+Para integrar o login real, os comentários no HTML indicam onde conectar o backend. Os campos de login estão sem `name` para evitar que as credenciais sejam enviadas na URL na navegação demonstrativa, inclusive se o JavaScript estiver desativado.
