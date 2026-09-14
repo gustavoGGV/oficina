@@ -47,6 +47,7 @@ As mesmas três contas funcionam em todos os temas. O banco guarda hashes gerado
 ## Fluxo
 
 - Perfil → `login.html` → `auth.php` → página inicial, exibindo nome e perfil.
+- Nas páginas iniciais e de login dos temas 1, 3, 4 e 5, Admin começa oculto e só aparece quando `auth.php` confirma `can_admin: true`. Sem JavaScript ou com falha na consulta, continua oculto. Na RUÍDO, o botão fica visível para todos, preservando o exercício didático, inclusive para comparar com o bloqueio do modo corrigido.
 - Admin → `admin.php`. Sem login, redireciona ao login. Cliente recebe HTTP 403, exceto no tema 2 vulnerável. Administrador entra normalmente.
 - “Sair” apaga o cookie daquele tema e volta ao login.
 - Não existem mais páginas `admin.html` desprotegidas contendo uma cópia do painel.

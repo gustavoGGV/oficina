@@ -67,8 +67,9 @@
 /* Acabamento do tema Vereda. */
  .login-art { object-fit: cover; border-radius: 120px 120px 12px 12px; } .login-card { border-radius: 18px; background: #fdfdf8; } .metric, .admin-list { border-radius: 14px; } 
 
-/* Acesso administrativo independente do login dos usuários. */
+/* O botão público só aparece após a confirmação da permissão pelo servidor. */
 .admin-link { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 15px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--ink); text-decoration: none; font-size: 12px; font-weight: 600; }
+.admin-link[hidden] { display: none; }
 .admin-link:hover, .admin-link[aria-current="page"] { background: var(--accent); border-color: var(--accent); color: var(--button-ink); }
 @media (max-width: 600px) {
   .site-header { flex-wrap: wrap; padding-block: 14px; }

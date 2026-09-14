@@ -21,7 +21,10 @@
     const data = await response.json();
     return { response, data };
   }
-  function showUser(user) {
+  function showUser(user, canAdmin) {
+    document.querySelectorAll("[data-admin-only]").forEach((link) => {
+      link.hidden = canAdmin !== true;
+    });
     status.replaceChildren();
     const text = document.createElement("span");
     text.textContent = user
@@ -29,6 +32,15 @@
       : "Você não está conectado.";
     status.append(text);
     if (user) {
+      // A reserva usa a identidade da conta sem pedir os mesmos dados novamente.
+      document.querySelectorAll("#interest-form [data-account-field]").forEach((group) => {
+        const field = group.querySelector("input");
+        field.value = user[field.name];
+        field.defaultValue = field.value;
+        field.readOnly = true;
+        field.dispatchEvent(new Event("input", { bubbles: true }));
+        group.hidden = true;
+      });
       const logout = document.createElement("button");
       logout.type = "button";
       logout.className = "confirm-button";
@@ -50,7 +62,7 @@
   api()
     .then(({ response, data }) => {
       if (!response.ok) throw new Error(data.message);
-      showUser(data.user);
+      showUser(data.user, data.can_admin);
     })
     .catch(() => {
       status.textContent =

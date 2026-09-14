@@ -67,8 +67,9 @@
 /* Acabamento do tema Margem. */
  .login-card { background: #ebece1; border-top: 5px solid var(--accent); } .login-art { height: 300px; } 
 
-/* Acesso administrativo independente do login dos usuários. */
+/* O botão público só aparece após a confirmação da permissão pelo servidor. */
 .admin-link { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 15px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--ink); text-decoration: none; font-size: 12px; font-weight: 600; }
+.admin-link[hidden] { display: none; }
 .admin-link:hover, .admin-link[aria-current="page"] { background: var(--accent); border-color: var(--accent); color: var(--button-ink); }
 @media (max-width: 600px) {
   .site-header { flex-wrap: wrap; padding-block: 14px; }

@@ -67,8 +67,9 @@
 /* Acabamento do tema PULSO. */
  .login-card { --paper: #faead9; --field: #f5dec8; --ink: #302539; --muted: #786256; --line: #ceb5a1; --accent: #302039; --button-ink: #fff0dd; background: var(--field); color: var(--ink); border-radius: 14px; border-bottom: 3px dashed #ac8c7b; } .login-card .section-label { color: var(--ink); } .account-page h1 { font-weight: 800; } .admin-heading h1 { color: var(--accent); } .metric { border-top: 3px solid var(--accent); } 
 
-/* Acesso administrativo independente do login dos usuários. */
+/* O botão público só aparece após a confirmação da permissão pelo servidor. */
 .admin-link { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 15px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--ink); text-decoration: none; font-size: 12px; font-weight: 600; }
+.admin-link[hidden] { display: none; }
 .admin-link:hover, .admin-link[aria-current="page"] { background: var(--accent); border-color: var(--accent); color: var(--button-ink); }
 @media (max-width: 600px) {
   .site-header { flex-wrap: wrap; padding-block: 14px; }

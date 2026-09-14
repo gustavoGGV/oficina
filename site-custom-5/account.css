@@ -67,8 +67,9 @@
 /* Acabamento do tema Grão. */
  .login-story { padding: 35px; background: #c86b40; color: #42271d; } .login-story h1 em { color: #fff0cf; } .login-story .intro, .login-story .eyebrow { color: #42271d; } .login-card { border-width: 0 0 1px; background: transparent; } .metric:first-child { background: #c86b40; color: #42271d; } .metric:first-child > span { color: #42271d; } 
 
-/* Acesso administrativo independente do login dos usuários. */
+/* O botão público só aparece após a confirmação da permissão pelo servidor. */
 .admin-link { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 15px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--ink); text-decoration: none; font-size: 12px; font-weight: 600; }
+.admin-link[hidden] { display: none; }
 .admin-link:hover, .admin-link[aria-current="page"] { background: var(--accent); border-color: var(--accent); color: var(--button-ink); }
 @media (max-width: 600px) {
   .site-header { flex-wrap: wrap; padding-block: 14px; }

@@ -43,6 +43,8 @@ Os formulários validam campos obrigatórios, nome e formato de e-mail; mostram 
 
 A RUÍDO também troca a cor da camiseta ilustrada e tem um guia de tamanhos expansível. A Vereda informa distância, duração e dificuldade ao trocar a trilha.
 
+Nos cinco sites, os campos de nome e e-mail do formulário ficam ocultos quando há uma conta conectada e são preenchidos com os dados dessa conta. Para visitantes, continuam visíveis e obrigatórios. A confirmação usa o nome da conta conectada.
+
 **Os formulários de reserva não fazem cobrança, reserva efetiva, envio de e-mail ou armazenamento de dados. O login possui backend e usa as contas do MySQL.** Use nomes e e-mails fictícios. A espera de 500 ms permite observar o carregamento durante a atividade. O conteúdo digitado é exibido com `textContent`.
 
 ## Atividade de 40 minutos
@@ -75,7 +77,7 @@ Entrega sugerida: **problema identificado → mudança feita → resultado obser
 
 O backend agora atende somente autenticação e controle de acesso aos admins. Reservas, pedidos, inscrições e alterações de status continuam mock, sem banco ou API próprios.
 
-Cada navbar tem acessos separados: o perfil abre `login.html`; Admin abre `admin.php`. Os clientes voltam ao site após entrar. A identidade aparece no topo, com botão Sair. As três contas são compartilhadas entre os temas; cookies e chaves são separados.
+Em cada navbar, o perfil abre `login.html`. Nas páginas iniciais e de login de Margem, PULSO, Vereda e Grão, o botão Admin fica oculto para visitantes e clientes e só aparece após o servidor confirmar a permissão administrativa. Na RUÍDO, o botão permanece visível para todos como parte da falha didática; o painel ainda exige login e, no modo corrigido, exige perfil de administrador. Admin abre `admin.php`. Os clientes voltam ao site após entrar. A identidade aparece no topo, com botão Sair. As três contas são compartilhadas entre os temas; cookies e chaves são separados.
 
 Consulte [o guia do backend](backend/README.md) para instalação, contas fictícias, tabela de vulnerabilidades, instruções com Burp e modo corrigido. A configuração padrão contém uma falha principal diferente em cada tema e restringe o backend ao computador local.
 

@@ -44,7 +44,7 @@
             ↗
           </span>
         </a>
-        <a aria-label="Acessar administração" class="admin-link" href="admin.php">
+        <a aria-label="Acessar administração" class="admin-link" data-admin-only hidden href="admin.php">
           Admin
         </a>
         <a aria-label="Login de usuários" class="profile-link" href="login.html" title="Login de usuários">
@@ -120,7 +120,7 @@
           </p>
           <form id="interest-form" novalidate="">
             <div class="row g-3">
-              <div class="col-12">
+              <div class="col-12" data-account-field>
                 <label class="form-label" for="name">
                   Como podemos chamar você?
                 </label>
@@ -128,7 +128,7 @@
                 <div class="invalid-feedback" id="name-error">
                 </div>
               </div>
-              <div class="col-12">
+              <div class="col-12" data-account-field>
                 <label class="form-label" for="email">
                   Seu e-mail
                 </label>
