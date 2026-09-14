@@ -22,6 +22,7 @@ Para distribuir o login funcional, copie a pasta `backend` junto dos cinco temas
 site-custom-N/
 ├── index.html                 # Textos, hero, campos e opções do formulário
 ├── style.css                  # Variáveis de aparência + estilos responsivos
+├── ux-lab.css                 # Uma falha visual intencional para a aula
 ├── script.js                  # CONFIG, validação, resumo e confirmação
 └── assets/
     ├── bootstrap.min.css      # Bootstrap local, com licença preservada
@@ -39,7 +40,7 @@ O Bootstrap fornece grid, espaçamentos, campos, botões e alertas. Os estilos d
 
 ## O que já funciona
 
-Os formulários validam campos obrigatórios, nome e formato de e-mail; mostram erros por campo; levam o foco para o primeiro erro; atualizam o total quando as opções mudam; exibem um estado de carregamento e uma confirmação acessível. A confirmação inclui escolhas, quantidade, valor e, quando houver, data, turma, tamanho e observação. Durante a confirmação simulada, os campos ficam desabilitados para manter o resumo consistente e impedir envios duplicados.
+Os formulários validam campos obrigatórios, nome e formato de e-mail; mostram erros por campo; levam o foco para o primeiro erro; atualizam o total quando as opções mudam; exibem um estado de carregamento e uma confirmação anunciada por leitores de tela. A apresentação contém as falhas didáticas descritas abaixo. A confirmação inclui escolhas, quantidade, valor e, quando houver, data, turma, tamanho e observação. Durante a confirmação simulada, os campos ficam desabilitados para manter o resumo consistente e impedir envios duplicados.
 
 A RUÍDO também troca a cor da camiseta ilustrada e tem um guia de tamanhos expansível. A Vereda informa distância, duração e dificuldade ao trocar a trilha.
 
@@ -47,9 +48,19 @@ Nos cinco sites, os campos de nome e e-mail do formulário ficam ocultos quando 
 
 **Os formulários de reserva não fazem cobrança, reserva efetiva, envio de e-mail ou armazenamento de dados. O login possui backend e usa as contas do MySQL.** Use nomes e e-mails fictícios. A espera de 500 ms permite observar o carregamento durante a atividade. O conteúdo digitado é exibido com `textContent`.
 
-## Atividade de 40 minutos
+### Gabarito do docente: uma falha por site
 
-As páginas são bases funcionais. Os desafios abaixo são sugestões abertas; não há erros de acessibilidade ou falhas de segurança inseridos de propósito. Para começar com uma versão problemática, o docente pode preparar uma cópia antes da aula e alterar, por exemplo, o destaque do total ou o texto da ação principal. Preserve uma cópia funcional para comparação.
+| Tema | Falha intencional | Como perceber | Correção sugerida |
+| --- | --- | --- | --- |
+| Margem | Contraste insuficiente | Títulos, rótulos, valores e total do formulário ficam quase da cor do fundo. | Recuperar cores de texto que permitam ler o formulário com clareza. |
+| RUÍDO | Botão principal minúsculo | O botão de reserva tem apenas 18 px de altura e texto de 7 px, dificultando localizar e tocar a ação. | Restaurar o tamanho e o destaque da ação principal. |
+| PULSO | Formulário sem responsividade | O painel fica preso a 900 px de largura. Em uma tela de celular, é preciso rolar na horizontal para alcançar os controles. | Fazer o painel respeitar a largura disponível em cada tela. |
+| Vereda | Feedback visual invertido | Envie vazio para ver um erro em verde com ✓; complete a reserva para ver sucesso em vermelho com ✕. | Alinhar cores e símbolos com o resultado informado no texto. |
+| Grão | Hierarquia visual invertida | A observação opcional ganha um bloco amarelo enorme, título de 36 px e área de texto de 240 px, dominando os campos essenciais. | Devolver à observação o destaque secundário e aproximar a confirmação dos campos essenciais. |
+
+As falhas estão em `ux-lab.css` de cada tema, carregado apenas pelo respectivo `index.html`. Para comparar com a apresentação original, desative esse stylesheet no navegador ou remova a linha `<link href="ux-lab.css" rel="stylesheet"/>` do HTML. Nome e e-mail continuam ocultos para contas conectadas, e a regra do botão Admin permanece a mesma. O modo `OFICINA_FIXED` altera as falhas do backend; não desativa estes exercícios visuais.
+
+### Roteiro
 
 | Minutos | Atividade |
 | --- | --- |
